@@ -1,42 +1,33 @@
-# hill climbing search of a one-dimensional objective function
-from numpy import asarray
-from numpy.random import randn
-from numpy.random import rand
-from numpy.random import seed
+import random
+import string
 
-# objective function
-def objective(x):
-	return x[0]**2.0
+def generate_random_solution(length=5):
+    return [random.choice(string.printable) for i in range(length)]
 
-# hill climbing local search algorithm
-def hillclimbing(objective, bounds, n_iterations, step_size):
-	# generate an initial point
-	solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
-	# evaluate the initial point
-	solution_eval = objective(solution)
-	# run the hill climb
-	for i in range(n_iterations):
-		# take a step
-		candidate = solution + randn(len(bounds)) * step_size
-		# evaluate candidate point
-		candidte_eval = objective(candidate)
-		# check if we should keep the new point
-		if candidte_eval <= solution_eval:
-			# store the new point
-			solution, solution_eval = candidate, candidte_eval
-			# report progress
-			print('>%d f(%s) = %.5f' % (i, solution, solution_eval))
-	return [solution, solution_eval]
+def evaluate(solution):
+    target = list("hello")
+    diff = 0
+    for i in range(len(target)):
+        s = solution[i]
+        t = target[i]
+        diff += abs(ord(s) - ord(t))
+    return diff
 
-# seed the pseudorandom number generator
-seed(5)
-# define range for input
-bounds = asarray([[-5.0, 5.0]])
-# define the total iterations
-n_iterations = 1000
-# define the maximum step size
-step_size = 0.1
-# perform the hill climbing search
-best, score = hillclimbing(objective, bounds, n_iterations, step_size)
-print('Done!')
-print('f(%s) = %f' % (best, score))
+def mutate_solution(solution):
+    index = random.randint(0, len(solution) - 1)
+    solution[index] = random.choice(string.printable)
+
+best = generate_random_solution()
+best_score = evaluate(best)
+
+while True:
+    print('Best score so far:', best_score, ', Solution:', "" .join(best))
+
+    if best_score == 0:
+        break
+    new_solution = list(best)
+    mutate_solution(new_solution)
+    score = evaluate(new_solution)
+    if evaluate(new_solution) < best_score:
+        best = new_solution
+        best_score = score
