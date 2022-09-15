@@ -17,15 +17,8 @@ points = dataset[0]
 kmeans = KMeans(n_clusters=4)
 # to say kmeans which dataset you have to use
 kmeans.fit(points)
-
 plt.scatter(dataset[0][:,0],dataset[0][:,1])
-
-
-
-
-
 clusters = kmeans.cluster_centers_
-
 # print out the clusters
 print(clusters)
 

@@ -20,9 +20,15 @@ model = BayesianNetwork([('age','heartdisease'),('sex','heartdisease'),('exang',
 print('\n Learning CPD using Maximum likelihood estimators')
 model.fit(heartDisease,estimator=MaximumLikelihoodEstimator)
 
+
+
+
+
 print('\n Inferencing with Bayesian Network:')
 HeartDiseasetest_infer = VariableElimination(model)
-print('\n 1.Probability of HeartDisease given evidence=restecg :1')
+
+
+print('\n 1.Probability of HeartDisease given evidence=restecg:1')
 q1=HeartDiseasetest_infer.query(variables=['heartdisease'],evidence={'restecg':1})
 print(q1)
 
