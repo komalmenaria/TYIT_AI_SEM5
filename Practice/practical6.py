@@ -1,35 +1,38 @@
-# import necessary packages 2
+# Step 1 import packages 
 import numpy as np
-
-#define 4 function unitStep , perceptronModel , OR_Logicfunction , AND_Logicfunction
+# Step 2 define function unitStep , preceptionalmodel , OR_Logicfunctio , AND_Logicfunction
 
 def unitStep(v):
     if v >= 0:
-     return 1
+      return 1
     else :
-     return 0
+      return 0
 
-
-def perceptronModel(x , w , b):
+    
+def preceptronmodel(x , w , b):
     v = np.dot(w,x)+b
-    y=unitStep(v)
-    return y 
+    y = unitStep(v)
+    return y
 
 def OR_Logicfunction(x):
     w = np.array([1,1])
     bOR = -0.5
-    return perceptronModel(x,w,bOR)
+    return preceptronmodel(x,w,bOR)  
 
 def AND_Logicfunction(x):
     w = np.array([1,1])
     bAND = -1.5
-    return perceptronModel(x,w,bAND)
+    return preceptronmodel(x,w,bAND)
 
+
+
+# Step 3 creating test sets 
 test1=np.array([0,0])
 test2=np.array([0,1])
 test3=np.array([1,0])
 test4=np.array([1,1])
 
+# Step 4 call OR  AND output 
 
 print("OR({},{})={}".format(0,0,OR_Logicfunction(test1)))
 print("OR({},{})={}".format(0,1,OR_Logicfunction(test2)))

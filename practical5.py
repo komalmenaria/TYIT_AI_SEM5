@@ -24,8 +24,8 @@ train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes = 
 
 # for output
 
-index = input("Enter your value: ")
+index = int(input("Enter your value: "))
 
-plt.imshow(train_set_x_orig[int(index)])
+plt.imshow(train_set_x_orig[index])
 plt.show()
-print("y = " + str(train_set_y_orig[:, int(index)]) + ", it's a '" + classes[np.squeeze(train_set_y_orig[:, int(index)])].decode("utf-8") +  "' picture.")
+print("y = " + str(train_set_y_orig[:, index]) + ", it's a '" + classes[np.squeeze(train_set_y_orig[:, index])].decode("utf-8") +  "' picture.")
