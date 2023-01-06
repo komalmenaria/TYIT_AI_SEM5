@@ -1,0 +1,21 @@
+% prac 9A - Splitting RGB planes
+close all; clear all; clc;
+img = imread('C:\Users\Student\Documents\MATLAB\dog.jpeg');
+subplot(1,4,1);
+imshow(img);
+title('original image');
+redp=img(:,:,1);
+greenp=img(:,:,2);
+bluep=img(:,:,3);
+
+subplot(1,4,2);
+imshow(greenp);
+title('green plane');
+
+subplot(1,4,3);
+imshow(redp);
+title('red plane');
+
+subplot(1,4,4);
+imshow(bluep);
+title('blue plane');
