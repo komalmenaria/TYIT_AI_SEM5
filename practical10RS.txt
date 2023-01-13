@@ -1,21 +1,31 @@
-% Practical 10 - Write a program to perform smoothing on a givn image with
-% a neighbourhood of 9*9
+% Practical 10 - Write a program to perform smoothing on a given image with
+% a neighborhood of 9*9
 
 close all;
 clear all;
 clc;
 img=imread('D:\TYIT_RS_PRACTICAL\dog.jpeg');
 grayimage=rgb2gray(img);
-subplot(1,3,1);
+subplot(2,3,1);
 imshow(grayimage);
 title('Original grey image');
 
 noiseimg=imnoise(grayimage, 'salt & pepper');
-subplot(1,3,2);
+subplot(2,3,2);
 imshow(noiseimg);
 title('Noise image');
 
-blurimage=imfilter(noiseimg,ones(9)/81, 'symmetric');
-subplot(1,3,3);
+blurimage=imfilter(noiseimg,ones(3)/9, 'symmetric');
+subplot(2,3,4);
 imshow(blurimage);
-title('Blur image');
+title('Blur image with 3*3');
+
+blurimage2=imfilter(noiseimg,ones(5)/25, 'symmetric');
+subplot(2,3,5);
+imshow(blurimage2);
+title('Blur image with 5*5');
+
+blurimage3=imfilter(noiseimg,ones(9)/81, 'symmetric');
+subplot(2,3,6);
+imshow(blurimage3);
+title('Blur image with 9*9');
