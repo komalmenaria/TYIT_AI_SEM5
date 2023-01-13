@@ -1,0 +1,21 @@
+% Practical 10 - Write a program to perform smoothing on a givn image with
+% a neighbourhood of 9*9
+
+close all;
+clear all;
+clc;
+img=imread('D:\TYIT_RS_PRACTICAL\dog.jpeg');
+grayimage=rgb2gray(img);
+subplot(1,3,1);
+imshow(grayimage);
+title('Original grey image');
+
+noiseimg=imnoise(grayimage, 'salt & pepper');
+subplot(1,3,2);
+imshow(noiseimg);
+title('Noise image');
+
+blurimage=imfilter(noiseimg,ones(9)/81, 'symmetric');
+subplot(1,3,3);
+imshow(blurimage);
+title('Blur image');

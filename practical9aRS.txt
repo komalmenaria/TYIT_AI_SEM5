@@ -1,0 +1,23 @@
+% Practical 9B - Pseudocoloring
+
+close all;
+clear all;
+clc;
+img = imread('D:\TYIT_RS_PRACTICAL\dog.jpeg');
+subplot(1,2,1);
+imshow(img)
+title('Original Image')
+
+redp = img(:,:,1);
+greenp = img(:,:,2);
+bluep = img(:,:,3);
+
+OP(:,:,1) = greenp;
+OP(:,:,2) = bluep;
+OP(:,:,3) = redp;
+
+subplot(1,2,2);
+imshow(OP)
+title('Pseudocoloring Image')
+
+
